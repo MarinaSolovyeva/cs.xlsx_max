@@ -13,11 +13,10 @@ import java.util.Random;
 public class FileService {
 
     public int getNMaxNum(String filePath, int n) {
+        validateFilePath(filePath);
         File file = new File(filePath);
-        //todo добавить метод с валидацией пути - что путь это путь, что файл существует, что расширение xlsx
         List<Integer> numbers = readNumbersFromXlsx(file);
         if (n <= 0 || n > numbers.size()) {
-            //todo добавить exception handler
             throw new IllegalArgumentException("Введенное значение должно быть больше количества чисел в файле");
         }
         return findNMaxNumByPartition(numbers, 0, numbers.size() - 1, n - 1);
@@ -75,4 +74,22 @@ public class FileService {
         nums.set(j, temp);
     }
 
+    private void validateFilePath(String filePath) {
+        if (filePath == null || filePath.trim().isEmpty()) {
+            throw new IllegalArgumentException("Путь к файлу не должен быть пустым.");
+        }
+
+        File file = new File(filePath);
+        if (!file.exists()) {
+            throw new IllegalArgumentException("Файл не найден: " + filePath);
+        }
+
+        if (!file.isFile()) {
+            throw new IllegalArgumentException("Указанный путь не является файлом: " + filePath);
+        }
+
+        if (!filePath.toLowerCase().endsWith(".xlsx")) {
+            throw new IllegalArgumentException("Файл должен иметь расширение .xlsx");
+        }
+    }
 }

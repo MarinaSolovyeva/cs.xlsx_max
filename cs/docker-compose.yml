@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  cs:
+    container_name: cs
+    build: .
+    ports:
+      - "8001:8001"
+    volumes:
+      - "C:/Users/marina/Desktop:/app/files"

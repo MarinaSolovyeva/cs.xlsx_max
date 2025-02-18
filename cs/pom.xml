@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.xlsx</groupId>
     <artifactId>cs</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>cs</name>
     <description>The project was developed as part of the interview process.</description>
     <url/>
@@ -28,7 +28,7 @@
     </scm>
     <properties>
         <java.version>23</java.version>
-        <openapi.version>2.2.0</openapi.version>
+        <openapi.version>2.8.5</openapi.version>
     </properties>
     <dependencies>
         <dependency>
